@@ -1,0 +1,72 @@
+{
+  "name": "testName",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": 1,
+      "question-text": "Question number 1?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    },
+    {
+      "id": 2,
+      "question-text": "Question number 2?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    },
+    {
+      "id": 3,
+      "question-text": "Question number 3?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    },
+    {
+      "id": 4,
+      "question-text": "Question number 4?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    },
+    {
+      "id": 5,
+      "question-text": "Question number 5?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    },
+    {
+      "id": 6,
+      "question-text": "Question number 6?",
+      "wrong-answers": [
+        "answer1",
+        "answer2",
+        "answer3"
+      ],
+      "correct-answer": "correct",
+      "explanation": "This answer is correct because..."
+    }
+  ]
+}
