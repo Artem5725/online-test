@@ -6,66 +6,66 @@
       "id": 1,
       "question-text": "Question number 1?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer1.1",
+        "answer1.2",
+        "answer1.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct1",
       "explanation": "This answer is correct because..."
     },
     {
       "id": 2,
       "question-text": "Question number 2?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer2.1",
+        "answer2.2",
+        "answer2.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct2",
       "explanation": "This answer is correct because..."
     },
     {
       "id": 3,
       "question-text": "Question number 3?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer3.1",
+        "answer3.2",
+        "answer3.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct3",
       "explanation": "This answer is correct because..."
     },
     {
       "id": 4,
       "question-text": "Question number 4?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer4.1",
+        "answer4.2",
+        "answer4.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct4",
       "explanation": "This answer is correct because..."
     },
     {
       "id": 5,
       "question-text": "Question number 5?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer5.1",
+        "answer5.2",
+        "answer5.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct5",
       "explanation": "This answer is correct because..."
     },
     {
       "id": 6,
       "question-text": "Question number 6?",
       "wrong-answers": [
-        "answer1",
-        "answer2",
-        "answer3"
+        "answer6.1",
+        "answer6.2",
+        "answer6.3"
       ],
-      "correct-answer": "correct",
+      "correct-answer": "correct6",
       "explanation": "This answer is correct because..."
     }
   ]
