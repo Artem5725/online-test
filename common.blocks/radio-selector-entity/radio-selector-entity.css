@@ -1,0 +1,7 @@
+.radio-selector-entity{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    text-align: center;
+    vertical-align: center;
+}

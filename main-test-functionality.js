@@ -70,6 +70,7 @@ class Test {
         this.quizFinished = true;
         this.currentId = 0;
         this.#showQuestion(this.shuffledQuestions[this.currentId], true);
+        this.#restoreAnswer();
         this.#showRealResult(this.currentId);
         console.log(this.currentAnswers);
     }
@@ -93,32 +94,50 @@ class Test {
         questionText.classList.add('quiz-question__text');
         questionText.innerText = question["question-text"];
         let questionAnswers = document.createElement('div');
-        questionAnswers.classList.add('radio-selector');
+        questionAnswers.classList.add('radio-selector', 'quiz-question__answers');
         for (let answer in question.allAnswers) {
             let curAnswerRadio = document.createElement('input')
             curAnswerRadio.type = "radio";
             curAnswerRadio.name = "answer";
+            curAnswerRadio.classList.add('radio-selector-entity__radio');
             curAnswerRadio.value = question.allAnswers[answer];
             curAnswerRadio.id = "answer" + answer;
             let curAnswerLabel = document.createElement('label');
-            curAnswerLabel.for = curAnswerRadio.id;
+            curAnswerLabel.htmlFor = curAnswerRadio.id;
             curAnswerLabel.innerText = question.allAnswers[answer];
-            questionAnswers.appendChild(curAnswerRadio);
-            questionAnswers.appendChild(curAnswerLabel);
+            curAnswerLabel.classList.add('radio-selector-entity__label');
+            let curAnswerEntity = document.createElement('div')
+            curAnswerEntity.classList.add('radio-selector-entity');
+            curAnswerEntity.appendChild(curAnswerRadio);
+            curAnswerEntity.appendChild(curAnswerLabel);
+            questionAnswers.appendChild(curAnswerEntity);
         }
         output.appendChild(questionText);
         output.appendChild(questionAnswers);
     }
 
+    #prepareStatus(status) {
+        let statusElem = document.createElement('div');
+        //statusElem.classList.add('');// Todo add class
+        statusElem.innerText = status;
+        return statusElem;
+    }
+
     #showRealResult() {
         let correctAnswer = this.shuffledQuestions[this.currentId]["correct-answer"];
         let chosenAnswer = this.currentAnswers[this.currentId];
-        if (correctAnswer === chosenAnswer) {
-            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].after("CORRECT");
+        if (!chosenAnswer) {
+            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
+            document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("No answer"));
+        } else if (correctAnswer === chosenAnswer) {
+            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
+            document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("Correct"));
         } else {
-            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].after("CORRECT");
-            document.querySelectorAll(`input[value="${CSS.escape(chosenAnswer)}"]`)[0].after("WRONG");
+            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
+            document.querySelectorAll(`input[value="${CSS.escape(chosenAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_false");
+            document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("Mistake"));
         }
+
     }
 
     #removeQuestion() {

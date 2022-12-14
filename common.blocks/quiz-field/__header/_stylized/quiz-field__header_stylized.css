@@ -1,0 +1,5 @@
+.quiz-field__header_stylized {
+    font-size: var(--font-size-big);
+    line-height: var(--line-height-big);
+    border-radius: inherit;
+}

@@ -1,0 +1,7 @@
+.quiz-question{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    row-gap: 10px;
+}

@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="functionality/base/base.css">
-    <link rel="stylesheet" href="functionality/quiz-field/quiz-field.css">
-    <link rel="stylesheet" href="functionality/quiz-question/quiz-question.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz on js">
+    <meta name="keywords" content="Quiz, test, js, css, html">
+    <link rel="stylesheet" href="common.blocks/base/base.css">
+    <link rel="stylesheet" href="common.blocks/base-block/base-block.css">
+    <link rel="stylesheet" href="common.blocks/quiz-field/quiz-field.css">
+    <link rel="stylesheet" href="common.blocks/quiz-field/_stylized/quiz-field_stylized.css">
+    <link rel="stylesheet" href="common.blocks/quiz-field/_display/quiz-field_display_grid.css">
+    <link rel="stylesheet" href="common.blocks/quiz-field/__header/quiz-field__header.css">
+    <link rel="stylesheet" href="common.blocks/quiz-field/__header/_stylized/quiz-field__header_stylized.css">
+    <link rel="stylesheet" href="common.blocks/quiz-question/quiz-question.css">
+    <link rel="stylesheet" href="common.blocks/quiz-question/__answers/quiz-question__answers.css">
+    <link rel="stylesheet" href="common.blocks/quiz-question/__text/quiz-question__text.css">
+    <link rel="stylesheet" href="common.blocks/quiz-question/__text/_stylized/quiz-question__text_stylized.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector/radio-selector.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/radio-selector-entity.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/__label/radio-selector-entity__label.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/__radio/radio-selector-entity__radio.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/_correct/radio-selector-entity_correct.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/_false/radio-selector-entity_false.css">
+    <link rel="stylesheet" href="common.blocks/styles/style-orange.css"><!-- Base style -->
     <title>Title</title>
 
 </head>
-<body>
-<div class="quiz-field">
-    <div class="quiz-field__header">Тест 1 Тренировочный тест</div>
+<body class="base-block">
+<div class="quiz-field quiz-field_stylized quiz-field_display_grid">
+    <div class="quiz-field__header quiz-field__header_stylized">Викторина</div>
 
     <div class="quiz-question">
-
-        <!--<div class="quiz-question__text"></div>
-        <div class="radio-selector">
-            <input type="radio" id="answer1" name="answer" value="answer">
-            <label for="answer1">Email</label>
-        </div>-->
+        <!--Пройдите викторину на знание "чего-то". Для начала нажмите кнопку "Старт"-->
+        <div class="quiz-question__text quiz-question__text_stylized">Текст вопроса</div>
+        <div class="radio-selector quiz-question__answers">
+            <div class="radio-selector-entity">
+                <input class="radio-selector__radio" type="radio" id="answer1" name="answer" value="answer">
+                <label class="radio-selector__label" for="answer1">Ответ 1</label>
+            </div>
+            <div class="radio-selector-entity">
+                <input class="radio-selector__radio" type="radio" id="answer2" name="answer" value="answer">
+                <label class="radio-selector__label" for="answer2">Ответ 2</label>
+            </div>
+            <div class="radio-selector-entity">
+                <input class="radio-selector__radio" type="radio" id="answer3" name="answer" value="answer">
+                <label class="radio-selector__label" for="answer3">Ответ 3</label>
+            </div>
+        </div>
     </div>
-
     <div class="quiz-buttons">
         <button type="button" onclick="testOperations()">Начать тестирование</button>
         <button type="button" class="button quiz-buttons__next">next</button>

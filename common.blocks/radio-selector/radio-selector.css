@@ -1,0 +1,6 @@
+.radio-selector{
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    row-gap: 10px;
+}
