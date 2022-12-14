@@ -1,0 +1,9 @@
+.quiz-field_stylized{ /* style */
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--font-color);
+    line-height: var(--line-height);
+    background-color: var(--background-quiz);
+    border: var(--border);
+    border-radius: var(--border-radius);
+}

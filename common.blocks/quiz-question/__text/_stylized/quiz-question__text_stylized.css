@@ -1,0 +1,4 @@
+.quiz-question__text_stylized{
+    font-size: var(--font-size-mid);
+    line-height: var(--line-height-mid);
+}
