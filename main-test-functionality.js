@@ -2,9 +2,9 @@ async function testOperations() {
     let questionObj = await getTestQuestions();
     // prepare view - change buttons panel + clear questions field
     let manipulation = new Test(questionObj, 5);
-    document.getElementsByClassName('quiz-buttons__next')[0].onclick = manipulation.nextQuestion.bind(manipulation);
-    document.getElementsByClassName('quiz-buttons__prev')[0].onclick = manipulation.prevQuestion.bind(manipulation);
-    document.getElementsByClassName('quiz-buttons__finish')[0].onclick = manipulation.checkAnswers.bind(manipulation);
+    document.getElementsByClassName('quiz-navigation__next')[0].onclick = manipulation.nextQuestion.bind(manipulation);
+    document.getElementsByClassName('quiz-navigation__prev')[0].onclick = manipulation.prevQuestion.bind(manipulation);
+    document.getElementsByClassName('quiz-navigation__finish')[0].onclick = manipulation.checkAnswers.bind(manipulation);
 
 }
 
@@ -22,36 +22,46 @@ async function getTestQuestions() {
 
 class Test {
     constructor(questionObj, count) {
+        this.btnNext = document.querySelectorAll('.quiz-navigation__next')[0]
+        this.btnPrev = document.querySelectorAll('.quiz-navigation__prev')[0]
         this.shuffledQuestions = this.#randomizeQuestions(questionObj.questions);
         this.maxQuestionsCount = count;
         this.currentId = 0;
         this.currentAnswers = Array(count);
         this.currentAnswers.fill(null, 0, count);
         this.#removeQuestion();
+        this.#buttonBlock(this.btnPrev);
         this.#showQuestion(this.shuffledQuestions[this.currentId]);
         this.quizFinished = false;
     }
 
-    nextQuestion() {  // Todo перенести проверку после moveQuestion и отрубать кнопку
-        if (this.currentId === this.maxQuestionsCount - 1) {
-            return;
-        }
+    nextQuestion() {
         if (!this.quizFinished) {
             this.#saveCurrentAnswer();
         }
         this.currentId++;
         this.#moveQuestion();
+        if (this.currentId === this.maxQuestionsCount - 1) {
+            this.#buttonBlock(this.btnNext); // перешли на последний вопрос кнопка next закрыта
+        }
+        else if(this.currentId === 1){ // перешли на вопрос 1 - кнопка prev активна
+            this.#buttonUnblock(this.btnPrev);
+        }
+
     }
 
     prevQuestion() {
-        if (this.currentId === 0) { // Todo перенести проверку после moveQuestion и отрубать кнопку
-            return;
-        }
         if (!this.quizFinished) {
             this.#saveCurrentAnswer();
         }
         this.currentId--;
         this.#moveQuestion();
+        if (this.currentId === 0) {
+            this.#buttonBlock(this.btnPrev);// перешли на 0 вопрос - кнопка prev закрыта
+        }
+        else if (this.currentId === this.maxQuestionsCount - 2){
+            this.#buttonUnblock(this.btnNext); // вернулись на предпоследний вопрос - кнопка next активна
+        }
     }
 
     #moveQuestion() {
@@ -116,25 +126,53 @@ class Test {
         output.appendChild(questionAnswers);
     }
 
+    #buttonBlock(btn){
+           btn.classList.add('button_blocked');
+    }
+
+    #buttonUnblock(btn){
+        btn.classList.remove('button_blocked');
+    }
+
     #prepareStatus(status) {
         let statusElem = document.createElement('div');
-        //statusElem.classList.add('');// Todo add class
+        statusElem.classList.add('quiz-question__status');
         statusElem.innerText = status;
         return statusElem;
+    }
+
+    #prepareCheck() {
+        let check = document.createElement('i');
+        check.classList.add('bi', 'bi-check', 'radio-selector-entity__check');
+        return check;
+    }
+
+    #prepareCross() {
+        let cross = document.createElement('i');
+        cross.classList.add('bi', 'bi-x', 'radio-selector-entity__cross');
+        return cross;
     }
 
     #showRealResult() {
         let correctAnswer = this.shuffledQuestions[this.currentId]["correct-answer"];
         let chosenAnswer = this.currentAnswers[this.currentId];
         if (!chosenAnswer) {
-            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
+            let correct = document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement;
+            correct.classList.add("radio-selector-entity_correct");
+            correct.appendChild(this.#prepareCheck());
             document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("No answer"));
         } else if (correctAnswer === chosenAnswer) {
-            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
+            let correct = document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement;
+            correct.classList.add("radio-selector-entity_correct");
+            correct.appendChild(this.#prepareCheck());
             document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("Correct"));
         } else {
-            document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_correct");
-            document.querySelectorAll(`input[value="${CSS.escape(chosenAnswer)}"]`)[0].parentElement.classList.add("radio-selector-entity_false");
+            let correct = document.querySelectorAll(`input[value="${CSS.escape(correctAnswer)}"]`)[0].parentElement;
+            correct.classList.add("radio-selector-entity_correct");
+            correct.appendChild(this.#prepareCheck());
+            let wrong = document.querySelectorAll(`input[value="${CSS.escape(chosenAnswer)}"]`)[0].parentElement;
+            wrong.classList.add("radio-selector-entity_false");
+            wrong.appendChild(this.#prepareCross());
             document.querySelectorAll('.quiz-question')[0].appendChild(this.#prepareStatus("Mistake"));
         }
 
@@ -158,21 +196,10 @@ class Test {
         return sortedQuestions;
     }
 
-    // TODO  css + отдельно бахнуть разные стили и все цвета задавать через переменныеЮ а потом нужный стиль подставлять
+    // TODO  кнопка смены стилей + доп стили
     // TODO вывести отдельно показ результатов (сделать доп. кнопку - просмотр ответов)
-    // TODO на крайних вопросах делать кнопки prev и next неактивными
-    // TODO Менять кнопки при проходе теста
-    /*
-        .Disabled{
-         pointer-events: none;
-         cursor: not-allowed;
-         opacity: 0.65;
-         filter: alpha(opacity=65);
-         -webkit-box-shadow: none;
-         box-shadow: none;
-         }
-         1.30
-*/
-
+    // TODO добавление/удаление кнопок со стр по необходимости
+    // TODO отредачить кнопки на узкой стр
+    // TODO refactor
 }
 

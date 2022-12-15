@@ -1,0 +1,6 @@
+.quiz-navigation {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    grid-template-rows: repeat(auto-fit, 1fr);
+    place-items: center center;
+}

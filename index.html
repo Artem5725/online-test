@@ -5,24 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Quiz on js">
     <meta name="keywords" content="Quiz, test, js, css, html">
-    <link rel="stylesheet" href="common.blocks/base/base.css">
-    <link rel="stylesheet" href="common.blocks/base-block/base-block.css">
-    <link rel="stylesheet" href="common.blocks/quiz-field/quiz-field.css">
-    <link rel="stylesheet" href="common.blocks/quiz-field/_stylized/quiz-field_stylized.css">
-    <link rel="stylesheet" href="common.blocks/quiz-field/_display/quiz-field_display_grid.css">
-    <link rel="stylesheet" href="common.blocks/quiz-field/__header/quiz-field__header.css">
-    <link rel="stylesheet" href="common.blocks/quiz-field/__header/_stylized/quiz-field__header_stylized.css">
-    <link rel="stylesheet" href="common.blocks/quiz-question/quiz-question.css">
-    <link rel="stylesheet" href="common.blocks/quiz-question/__answers/quiz-question__answers.css">
-    <link rel="stylesheet" href="common.blocks/quiz-question/__text/quiz-question__text.css">
-    <link rel="stylesheet" href="common.blocks/quiz-question/__text/_stylized/quiz-question__text_stylized.css">
     <link rel="stylesheet" href="common.blocks/radio-selector/radio-selector.css">
     <link rel="stylesheet" href="common.blocks/radio-selector-entity/radio-selector-entity.css">
     <link rel="stylesheet" href="common.blocks/radio-selector-entity/__label/radio-selector-entity__label.css">
     <link rel="stylesheet" href="common.blocks/radio-selector-entity/__radio/radio-selector-entity__radio.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/__check/radio-selector-entity__check.css">
+    <link rel="stylesheet" href="common.blocks/radio-selector-entity/__cross/radio-selector-entity__cross.css">
     <link rel="stylesheet" href="common.blocks/radio-selector-entity/_correct/radio-selector-entity_correct.css">
     <link rel="stylesheet" href="common.blocks/radio-selector-entity/_false/radio-selector-entity_false.css">
-    <link rel="stylesheet" href="common.blocks/styles/style-orange.css"><!-- Base style -->
+    <link rel="stylesheet" href="common.blocks/button/button.css">
+    <link rel="stylesheet" href="common.blocks/button/_blocked/button_blocked.css">
+    <link rel="stylesheet" href="custom.blocks/base/base.css">
+    <link rel="stylesheet" href="custom.blocks/base-block/base-block.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-field/quiz-field.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-field/_stylized/quiz-field_stylized.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-field/_display/quiz-field_display_grid.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-field/__header/quiz-field__header.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-field/__header/_stylized/quiz-field__header_stylized.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-question/quiz-question.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-question/__answers/quiz-question__answers.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-question/__text/quiz-question__text.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-question/__text/_stylized/quiz-question__text_stylized.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-question/__status/quiz-question__status.css">
+    <link rel="stylesheet" href="custom.blocks/button/button.css">
+    <link rel="stylesheet" href="custom.blocks/quiz-navigation/quiz-navigation.css">
+    <link rel="stylesheet" href="custom.blocks/styles/style-orange.css"><!-- Base style -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"> <!-- icons -->
     <title>Title</title>
 
 </head>
@@ -41,6 +49,7 @@
             <div class="radio-selector-entity">
                 <input class="radio-selector__radio" type="radio" id="answer2" name="answer" value="answer">
                 <label class="radio-selector__label" for="answer2">Ответ 2</label>
+
             </div>
             <div class="radio-selector-entity">
                 <input class="radio-selector__radio" type="radio" id="answer3" name="answer" value="answer">
@@ -48,11 +57,11 @@
             </div>
         </div>
     </div>
-    <div class="quiz-buttons">
-        <button type="button" onclick="testOperations()">Начать тестирование</button>
-        <button type="button" class="button quiz-buttons__next">next</button>
-        <button type="button" class="button quiz-buttons__prev">prev</button>
-        <button type="button" class="button quiz-buttons__finish">finish</button>
+    <div class="quiz-navigation">
+        <button type="button" class="button" onclick="testOperations()">Начать тестирование</button>
+        <button type="button" class="button quiz-navigation__next">next</button>
+        <button type="button" class="button quiz-navigation__prev">prev</button>
+        <button type="button" class="button quiz-navigation__finish">finish</button>
     </div>
 </div>
 <script type="text/javascript" src="main-test-functionality.js"></script>
