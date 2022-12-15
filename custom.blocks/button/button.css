@@ -1,0 +1,16 @@
+.button{
+    border: var(--border-btn);
+    border-radius: var(--border-btn-radius);
+    background-color: var(--button-background);
+    color: var(--font-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    min-width: min-content;
+}
+
+.button:hover{
+    border: var(--border-btn-hover);
+    background-color: var(--button-background);
+    color: var(--button-color-hover);
+}

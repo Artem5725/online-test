@@ -1,0 +1,20 @@
+:root {
+    --font-size: 16px;
+    --font-size-mid: 24px;
+    --font-size-big: 32px;
+    --line-height: 20px;
+    --line-height-mid: 30px;
+    --line-height-big: 40px;
+    --font-family: Sans-Serif;
+    --font-color: #FFFFFF;
+    --background-quiz: #D2691E;
+    --background-page: linear-gradient(to right, #FFDAB9, #F4A460);
+    --button-background: #FF4500;
+    --button-background-hover: #FF4500;
+    --button-color-hover: #800000;
+    --border: 2px solid #FFFFFF;
+    --border-btn: 2px solid #FFFFFF;
+    --border-btn-hover: 2px solid #800000;
+    --border-radius: 20px;
+    --border-btn-radius: 10px;
+}
